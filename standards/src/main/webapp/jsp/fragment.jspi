@@ -1,0 +1,99 @@
+<%--
+/* ============================================================================================================================= */
+/* A JSP page fragment                                                                                                           */
+/*                                                                                                                               */
+/* Standards are similar to main page jsp.                                                                                       */
+/* Module comment specifies all dependencies on the including context.                                                           */
+/* Eg.                                                                                                                           */
+/* - This fragment must be enclosed by an element with id "availabiltycal".                                                      */
+/* - The WebConst.REF_PI_AVAILABILITY_CALENDAR bean must be present in the request.                                              */
+/* - Package directive is included in module comment                                                                             */
+/* ============================================================================================================================= */
+
+package au.com.tt.agweb.web.jsp
+--%>
+
+<%-- container start --%>
+<div id="ac-container">
+<%-- wrapper start --%>
+<div id="ac-wrapper">
+    <%-- header start --%>
+    <div id="ac-header">
+        <div id="ac-close">
+            <a href="javascript:hideAvailabilityCalendar()"><em>Close</em></a>
+        </div>
+        <div id="ac-title">
+            <p><bean:write name="<%= WebConst.REF_PI_AVAILABILITY_CALENDAR %>" property="unitCountAndDurationText"/>
+               <strong><bean:write name="<%= WebConst.REF_PI_AVAILABILITY_CALENDAR %>" property="calendarMonthText"/></strong></p>
+        </div>
+    </div>
+    <%-- header end --%>
+        
+    <%-- content start --%>
+    <div id="ac-content">
+    <table cellpadding="1" cellspacing="0">
+        <tr>
+            <th scope="col">Mon</th>
+            <th scope="col">Tue</th>
+            <th scope="col">Wed</th>
+            <th scope="col">Thur</th>
+            <th scope="col">Fri</th>
+            <th scope="col">Sat</th>
+            <th scope="col">Sun</th>
+        </tr>
+        <tr>
+        <logic:iterate id="day"
+                       name="<%= WebConst.REF_PI_AVAILABILITY_CALENDAR %>"
+                       property="calendarDays"
+                       type="au.com.tt.agweb.struts.web.AvailabilityCalendar.Day">
+
+            <%-- padding day (leading or trailing) --%>
+            <logic:equal name="day" property="paddingDay" value="true">
+                <td class="ac-na">&nbsp;</td>
+            </logic:equal>
+
+            <%-- inventory day --%>
+            <logic:equal name="day" property="paddingDay" value="false">
+                <logic:equal name="day" property="startOfWeek" value="true">
+                    </tr><tr>
+                </logic:equal>
+
+                <logic:equal name="day" property="availability" value="Available">
+                    <td class="ac-av <logic:equal name="day" property="duringStay" value="true">ac-selected</logic:equal>">
+                        <span><bean:write name="day" property="dayOfMonth"/></span>
+                            <div>AV</div>
+                            <strong><bean:write name="day" property="remainingAllotment"/></strong>
+                    </td>
+                </logic:equal>
+                <logic:equal name="day" property="availability" value="OnRequest">
+                    <td class="ac-rq <logic:equal name="day" property="duringStay" value="true">ac-selected</logic:equal>">
+                        <span><bean:write name="day" property="dayOfMonth"/></span>
+                        <div>RQ</div>
+                        <strong><bean:write name="day" property="remainingAllotment"/></strong>
+                    </td>
+                </logic:equal>
+                <logic:equal name="day" property="availability" value="Unable">
+                    <td class="ac-un <logic:equal name="day" property="duringStay" value="true">ac-selected</logic:equal>">
+                        <span><bean:write name="day" property="dayOfMonth"/></span>
+                        <div>UN</div>
+                        <strong></strong>
+                    </td>
+                </logic:equal>
+                <%-- inventory day end --%>
+                </logic:equal>
+            </logic:iterate>
+            </tr>
+        </table>
+    </div>
+    <ul id="ac-legend">
+        <li class="ac-legend-av"><span>AV</span> Available</li>
+        <li class="ac-legend-rq"><span>RQ</span> On Request</li>
+        <li class="ac-legend-un"><span>UN</span> Unavailable</li>
+        <li class="ac-legend-selected"><span>&nbsp;</span> Selected Days</li>
+        <li class="ac-legend-free"><span>&nbsp;</span> Freesold (allotment is unnecessary)</li>
+    </ul>
+<%-- content end --%>
+</div>
+<%-- wrapper end --%>
+</div>
+<%-- container end --%>

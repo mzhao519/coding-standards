@@ -1,0 +1,208 @@
+/**
+ * CSS Style Rules
+ * reference: https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml 
+ */
+ 
+/* 1. Type Selectors 
+ * avoid qualifying class names with type selectors. 
+ * Unless necessary, do not use element names in conjunction width classes.
+*/ 
+
+  /* Not recommended */
+  div.error {}
+  
+  /* Recommended */
+  .error {}
+  
+/* 2. Shorthand Properties
+ * Use shorthand properties where possible. 
+ *
+*/
+    /* Not recommended */
+.recommend-not {   
+    border-top-style: none;
+    font-family: palatino, georgia, serif;
+    font-size: 100%;
+    line-height: 1.6;
+    padding-bottom: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0;
+}
+    
+/* Recommended */
+.recommend {
+    border-top: 0;
+    font: 100%/1.6 palatino, georgia, serif;
+    padding: 0 1em 2em;
+}
+
+  
+/* 3. Class Name Style
+ * Use class names that are as short as possible but as long as necessary.  
+ *
+*/
+/* Not recommended */
+.navigation {}
+.atr {}
+
+/* Recommended */
+.nav {}
+.author {}
+
+/* 4. 0 and Units
+ * Omit unit specification after “0” values.  
+ *
+*/
+/* Not recommended */
+.recommend-not { 
+    margin: 0px;
+    padding: 0em;
+}
+/* Recommended */
+.recommend {
+    margin: 0;
+    padding: 0;
+}
+
+/* 5. Prefixes
+ * Prefix selectors with an application-specific prefix (optional).   
+ * Using namespaces helps preventing naming conflicts and can make 
+ * maintenance easier, for example in search and replace operations.
+*/
+.adw-help {} 
+.adw-noted {}
+
+/* 6. Class Name Delimiters
+ * Separate words in  class names by a hyphen.   
+ *
+*/
+/* Not recommended: does not separate the words “demo” and “image” */
+.demoimage {}
+
+/* Not recommended: uses underscore instead of hyphen */
+.error_status {}
+
+/* Recommended */
+.video-id {}
+.ads-sample {}
+
+
+/* 7. Declaration Stops
+ * Use a semicolon after every declaration. 
+ * End every declaration with a semicolon for consistency and extensibility reasons. 
+*/
+
+/* Not recommended */
+.test {
+  display: block;
+  height: 100px
+}
+
+/* Recommended */
+.test {
+  display: block;
+  height: 100px;
+}
+
+/* 8. Property Name Stops
+ * Use a space after a property name’s colon. 
+ * Always use a single space between property and value (but no space between property and colon) for consistency reasons. 
+*/
+
+/* Not recommended */
+h3 {
+  font-weight:bold;
+}
+
+/* Recommended */
+h3 {
+  font-weight: bold;
+}
+
+
+/* 9. Selector and Declaration Separation
+ * Separate selectors and declarations by new lines.  
+ * Always start a new line for each selector and declaration. 
+*/
+
+/* Not recommended */
+a:focus, a:active {
+  position: relative; top: 1px;
+}
+
+/* Recommended */
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+
+/* 10. Rule Separation
+ * Separate rules by new lines. 
+ * Always put a blank line (two line breaks) between rules. 
+*/
+/* recommend */
+html {
+  background: #fff;
+}
+
+body {
+  margin: auto;
+  width: 50%;
+}
+
+/* 11. Section Comments
+ * Group sections by a section comment (optional). 
+ * If possible, group style sheet sections together by using comments. Separate sections with new lines. 
+*/
+
+/* Header */
+
+.adw-header {}
+
+/* Footer */
+
+.adw-footer {}
+
+/* Gallery */
+
+.adw-gallery {}
+
+/**
+ * ID and Class Naming
+ * Use meaningful or generic ID and class names.
+ * Instead of presentational or cryptic names, always use ID and class names that reflect the purpose of the element in question, 
+ * or that are otherwise generic.
+ * 
+ * Names that are specific and reflect the purpose of the element should be preferred as these are most understandable and 
+ * the least likely to change.
+
+ * Generic names are simply a fallback for elements that have no particular or no meaning different from their siblings. 
+ * They are typically needed as “helpers.”
+
+ * Using functional or generic names reduces the probability of unnecessary document or template changes.
+ */
+
+/* Not recommended: meaningless */
+#yee-1901 {}
+
+/* Not recommended: presentational */
+.button-green {}
+.clear {}
+/* Recommended: specific */
+#gallery {}
+#login {}
+.video {}
+
+/* Recommended: generic */
+.aux {}
+.alt {}
+
+
+
+
+
+ 
